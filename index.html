@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub Wrapped ✦ Your year in code</title>
+<meta name="description" content="Your year in code, made adorable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<!-- Galaxy background -->
+<div class="galaxy" aria-hidden="true">
+  <div class="nebula nebula-1"></div>
+  <div class="nebula nebula-2"></div>
+  <div class="nebula nebula-3"></div>
+  <div class="nebula nebula-4"></div>
+  <div class="stars-layer stars-far"></div>
+  <div class="stars-layer stars-mid"></div>
+  <div class="stars-layer stars-near"></div>
+  <div class="stardust stardust-1"></div>
+  <div class="stardust stardust-2"></div>
+  <div class="stardust stardust-3"></div>
+</div>
+
+<!-- Clouds -->
+<div class="clouds" aria-hidden="true">
+  <div class="cloud cloud-1"></div>
+  <div class="cloud cloud-2"></div>
+  <div class="cloud cloud-3"></div>
+  <div class="cloud cloud-4"></div>
+</div>
+
+<!-- Anime floating icons -->
+<div class="anime-bg" aria-hidden="true">
+  <span class="anime-icon" style="--x:6%;--y:14%;--d:0s;--s:44px;--c:#fbcfe8" data-icon="sparkle"></span>
+  <span class="anime-icon" style="--x:90%;--y:18%;--d:1.4s;--s:36px;--c:#c4b5fd" data-icon="star"></span>
+  <span class="anime-icon" style="--x:12%;--y:78%;--d:2.6s;--s:40px;--c:#a5f3fc" data-icon="heart"></span>
+  <span class="anime-icon" style="--x:86%;--y:74%;--d:0.8s;--s:48px;--c:#fbcfe8" data-icon="sparkle"></span>
+  <span class="anime-icon" style="--x:48%;--y:8%;--d:2s;--s:32px;--c:#c4b5fd" data-icon="star"></span>
+  <span class="anime-icon" style="--x:30%;--y:90%;--d:3.2s;--s:38px;--c:#a5f3fc" data-icon="heart"></span>
+</div>
+
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<!-- Landing -->
+<header id="landing" class="screen">
+  <div class="hero-badge">
+    <i data-lucide="sparkles"></i>
+    <span>Made with love & magic</span>
+  </div>
+
+  <div class="title-wrap">
+    <h1 class="grad-text">GitHub Wrapped</h1>
+    <div class="title-underline"></div>
+  </div>
+
+  <p class="tagline">
+    <i data-lucide="heart"></i>
+    <span>Your year in code, made adorable</span>
+  </p>
+
+  <form id="form" class="glass form">
+    <span class="input-icon"><i data-lucide="github"></i></span>
+    <input id="username" type="text" placeholder="Enter GitHub username" autocomplete="off" required>
+    <button class="btn" type="submit">
+      <i data-lucide="wand-sparkles"></i>
+      <span>Generate My Wrapped</span>
+    </button>
+  </form>
+
+  <p id="error" class="error" role="alert" hidden></p>
+</header>
+
+<!-- Loading -->
+<div id="loading" class="screen overlay" hidden>
+  <div class="loading-scene">
+    <div class="ring"></div>
+    <div class="ring-inner"></div>
+  </div>
+  <p id="loadText" class="load-text">
+    <i data-lucide="sparkles"></i>
+    <span>Gathering your repos...</span>
+  </p>
+  <div class="bar"><span id="barFill"></span></div>
+  <div class="load-dots"><span></span><span></span><span></span></div>
+</div>
+
+<!-- Story -->
+<main id="story" hidden>
+
+  <!-- Welcome -->
+  <section class="screen reveal">
+    <div class="avatar-wrap">
+      <div class="avatar-glow"></div>
+      <img id="avatar" alt="Avatar" crossorigin="anonymous">
+      <span class="avatar-sparkle sp-1"></span>
+      <span class="avatar-sparkle sp-2"></span>
+      <span class="avatar-sparkle sp-3"></span>
+    </div>
+    <h2 id="hey" class="grad-text"></h2>
+    <div class="row">
+      <div class="glass pill-card">
+        <i data-lucide="quote"></i>
+        <span id="bio"></span>
+      </div>
+      <div class="glass pill-card">
+        <i data-lucide="map-pin"></i>
+        <span id="loc"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- The numbers -->
+  <section class="screen reveal">
+    <h2 class="section-title">
+      <i data-lucide="sparkles"></i>
+      <span id="numbersTitle">The numbers</span>
+    </h2>
+    <div class="grid">
+      <div class="glass card">
+        <div class="icon-bubble pink"><i data-lucide="folder-git-2"></i></div>
+        <b class="big grad-text" data-key="repos">0</b>
+        <span class="label">Public repos</span>
+      </div>
+      <div class="glass card">
+        <div class="icon-bubble lavender"><i data-lucide="heart"></i></div>
+        <b class="big grad-text" data-key="followers">0</b>
+        <span class="label">Followers</span>
+      </div>
+      <div class="glass card">
+        <div class="icon-bubble blue"><i data-lucide="eye"></i></div>
+        <b class="big grad-text" data-key="following">0</b>
+        <span class="label">Following</span>
+      </div>
+      <div class="glass card">
+        <div class="icon-bubble peach"><i data-lucide="sprout"></i></div>
+        <b class="big grad-text" data-key="age">0</b>
+        <span class="label">Years on GitHub</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top languages -->
+  <section class="screen reveal">
+    <h2 class="section-title">
+      <i data-lucide="code-2"></i>
+      <span id="langsTitle">Top languages</span>
+    </h2>
+    <div class="langs-wrap">
+      <div class="lang-pie-wrap">
+        <div id="langPie" class="lang-pie"></div>
+        <div class="lang-center">
+          <b id="topLangName" class="grad-text">—</b>
+          <span class="label">Top language</span>
+        </div>
+      </div>
+      <div id="legend" class="lang-legend"></div>
+    </div>
+  </section>
+
+  <!-- Streaks -->
+  <section class="screen reveal">
+    <h2 class="section-title">
+      <i data-lucide="flame"></i>
+      <span id="streaksTitle">Coding streaks</span>
+    </h2>
+    <div class="streak-wrap">
+      <div class="glass streak-card hero-streak">
+        <div class="streak-flame">
+          <div class="flame-glow"></div>
+          <i data-lucide="flame"></i>
+        </div>
+        <b class="streak-big grad-text" data-key="currentStreak">0</b>
+        <span class="label">Day current streak</span>
+        <p class="streak-sub" id="streakStatus">Keep the fire alive</p>
+      </div>
+      <div class="grid streak-grid">
+        <div class="glass card">
+          <div class="icon-bubble pink"><i data-lucide="trophy"></i></div>
+          <b class="big grad-text" data-key="longestStreak">0</b>
+          <span class="label">Longest streak</span>
+        </div>
+        <div class="glass card">
+          <div class="icon-bubble lavender"><i data-lucide="calendar-check"></i></div>
+          <b class="big grad-text" data-key="activeDays">0</b>
+          <span class="label">Active days (12 weeks)</span>
+        </div>
+        <div class="glass card">
+          <div class="icon-bubble blue"><i data-lucide="zap"></i></div>
+          <b class="big grad-text" data-key="totalEvents">0</b>
+          <span class="label">Total contributions</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section class="screen reveal">
+    <h2 class="section-title">
+      <i data-lucide="award"></i>
+      <span id="achievementsTitle">Achievements</span>
+    </h2>
+    <div class="grid achievements">
+      <div class="glass card badge">
+        <div class="icon-bubble pink"><i data-lucide="star"></i></div>
+        <b class="big grad-text" data-key="stars">0</b>
+        <span class="label">Total stars earned</span>
+      </div>
+      <div class="glass card badge">
+        <div class="icon-bubble lavender"><i data-lucide="git-fork"></i></div>
+        <b class="big grad-text" data-key="forks">0</b>
+        <span class="label">Total forks</span>
+      </div>
+      <div class="glass card badge">
+        <div class="icon-bubble blue"><i data-lucide="git-branch"></i></div>
+        <b class="big grad-text" data-key="watchers">0</b>
+        <span class="label">Repo watchers</span>
+      </div>
+      <div class="glass card badge">
+        <div class="icon-bubble peach"><i data-lucide="calendar-check"></i></div>
+        <b class="big grad-text" data-key="updated">0</b>
+        <span class="label">Repos updated this year</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Most starred repo -->
+  <section class="screen reveal">
+    <h2 class="section-title">
+      <i data-lucide="star"></i>
+      <span id="starTitle">Most starred repo</span>
+    </h2>
+    <div class="grad-border">
+      <div class="glass showcase" id="starCard"></div>
+    </div>
+  </section>
+
+  <!-- Recent activity -->
+  <section class="screen reveal">
+    <h2 class="section-title">
+      <i data-lucide="clock"></i>
+      <span id="recentTitle">Recently updated</span>
+    </h2>
+    <div class="recent-list" id="recentList"></div>
+  </section>
+
+  <!-- Activity chart -->
+  <section class="screen reveal">
+    <h2 id="activityTitle" class="section-title">
+      <i data-lucide="activity"></i>
+      <span>Commit activity</span>
+    </h2>
+    <div class="chart-box wide glass">
+      <canvas id="dayChart"></canvas>
+    </div>
+  </section>
+
+  <!-- Vibe -->
+  <section class="screen reveal">
+    <div id="shareCard" class="glass vibe-card">
+      <div class="vibe-stars">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <img id="vibeAvatar" alt="" crossorigin="anonymous">
+      <p class="label">Dev vibe</p>
+      <h2 id="vibeTitle" class="vibe-title"></h2>
+      <p id="vibeUser" class="muted"></p>
+      <div class="vibe-deco">
+        <i data-lucide="sparkle"></i>
+        <i data-lucide="heart"></i>
+        <i data-lucide="sparkle"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Share -->
+  <section class="screen reveal">
+    <h2 class="section-title">
+      <i data-lucide="send"></i>
+      <span>Share</span>
+    </h2>
+    <div class="row">
+      <button class="btn" id="dl">
+        <i data-lucide="image-down"></i>
+        <span>Download as image</span>
+      </button>
+      <button class="btn ghost" id="copy">
+        <i data-lucide="link"></i>
+        <span>Copy link</span>
+      </button>
+      <button class="btn ghost" id="restart">
+        <i data-lucide="rotate-ccw"></i>
+        <span>Start over</span>
+      </button>
+    </div>
+    <p class="footer-note">
+      Made with <span class="heart-beat"><i data-lucide="heart"></i></span> and lots of coffee
+    </p>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
