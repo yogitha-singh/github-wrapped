@@ -4,7 +4,7 @@
 
 A Spotify Wrapped-style dashboard that transforms any GitHub profile into a stunning, animated story.
 
-🌐 **Live Demo:** [github-wrapped-xl.vercel.app](https://github-wrapped-xl.vercel.app)
+🌐 **Live Demo:** https://github-wrapped-xi.vercel.app/
 
 ---
 
