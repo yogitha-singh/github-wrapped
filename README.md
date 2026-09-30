@@ -67,7 +67,7 @@ Built entirely on the frontend using the GitHub REST API. No backend, no databas
 | **Repository Highlights** | Most-starred repo, recently updated repos, language breakdown |
 | **Developer Personality** | A generated archetype based on habits, languages, and activity |
 | **Visual Experience** | Galaxy background, glassmorphism UI, scroll animations, 3D-style SVG pie chart, confetti |
-| **Sharing** | Username-based URLs (`?u=username`) and PNG export of your Wrapped card |
+| **Sharing** | Username-based URLs and PNG export of your Wrapped card |
 
 ---
 
