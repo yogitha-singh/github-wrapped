@@ -1,115 +1,161 @@
-# ✨ GitHub Wrapped
+<div align="center">
 
-> Your year in code, made adorable.
+# 🌌 GitHub Wrapped
 
-A Spotify Wrapped-style dashboard that transforms any GitHub profile into a stunning, animated story.
+**Your year in code, made adorable.**
 
-🌐 **Live Demo:** https://github-wrapped-xi.vercel.app/
+A Spotify Wrapped-inspired experience that turns any public GitHub profile into an animated, shareable story.
 
----
+<br>
 
-## ✨ Features
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Visit-8b5cf6?style=for-the-badge)](https://github-wrapped-xi.vercel.app/)
+[![License](https://img.shields.io/badge/License-MIT-22d3ee?style=for-the-badge)](#license)
+[![Status](https://img.shields.io/badge/Status-Active-34d399?style=for-the-badge)](#project-status)
 
-- 🌌 Animated galaxy background with nebulae, stardust, and sparkles
-- 🎨 Velvety 3D pie chart for language distribution
-- 🔥 Coding streak tracker (current, longest, active days)
-- 🏆 Achievement badges (stars, forks, watchers, updated repos)
-- ⭐ Most starred repo showcase with gradient border
-- 📊 Commit activity chart by day of week
-- 💫 Dev Vibe generator — fun personality title from your data
-- 📸 Download your wrapped card as PNG
-- 🎉 Confetti animations on milestones
-- 📱 Fully responsive
-- 🔗 Shareable URLs (`?u=username`)
+![HTML5](https://img.shields.io/badge/HTML5-e34f26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572b6?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-f7df1e?style=flat-square&logo=javascript&logoColor=black)
+![Chart.js](https://img.shields.io/badge/Chart.js-ff6384?style=flat-square&logo=chartdotjs&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
+
+</div>
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Overview
 
-- **HTML5**
-- **CSS3** — glassmorphism, gradients, keyframe animations
-- **Vanilla JavaScript (ES6+)**
-- **GitHub REST API v3**
-- **Chart.js** — bar charts
-- **Custom SVG** — 3D pie chart
-- **html2canvas** — image export
-- **canvas-confetti** — celebrations
-- **Lucide** — icons
-- **Google Fonts** — Quicksand + Space Grotesk
-- **Vercel** — hosting
+Enter any public GitHub username and get a cinematic dashboard of coding activity, top repositories, language preferences, streaks, and a personalized developer vibe.
+
+Built entirely on the frontend using the GitHub REST API. No backend, no database, no setup.
+
+**Try it:** [github-wrapped-xi.vercel.app](https://github-wrapped-xi.vercel.app/)
+**Share a profile:** `https://github-wrapped-xi.vercel.app/?u=username`
 
 ---
 
-## 🚀 Run Locally
+## 🎁 Features
+
+| Category | Highlights |
+| --- | --- |
+| **Profile Analytics** | Profile overview, repository count, stars, forks, watchers |
+| **Coding Activity** | Current and longest streaks, active days, commits by weekday |
+| **Repository Highlights** | Most-starred repo, recently updated repos, language breakdown |
+| **Developer Personality** | A generated archetype based on habits, languages, and activity |
+| **Visual Experience** | Galaxy background, glassmorphism UI, scroll animations, 3D-style SVG pie chart, confetti |
+| **Sharing** | Username-based URLs (`?u=username`) and PNG export of your Wrapped card |
+
+---
+
+## ⚙️ How It Works
+
+```text
+Username  ->  GitHub REST API (parallel requests)
+                  |-- /users/{username}
+                  |-- /users/{username}/repos
+                  |-- /users/{username}/events/public
+              ->  Aggregation  ->  Stats + Visualizations  ->  Wrapped Story
+                                                                  |-- Shareable URL
+                                                                  |-- PNG Export
+```
+
+Raw API responses are aggregated into repository counts, language distribution, stars, forks, watchers, streaks, and activity patterns, then rendered as an animated story.
+
+---
+
+## 🧰 Tech Stack
+
+| Technology | Purpose |
+| --- | --- |
+| HTML5, CSS3, JavaScript (ES6+) | Structure, styling, and application logic |
+| GitHub REST API v3 | Profile, repository, and event data |
+| Chart.js | Activity charts |
+| SVG | Custom 3D-style pie chart |
+| html2canvas | PNG export |
+| canvas-confetti | Milestone celebrations |
+| Lucide | Icons |
+| Google Fonts | Quicksand, Space Grotesk |
+| Vercel | Hosting and deployment |
+
+---
+
+## 🚀 Getting Started
+
+**Prerequisites:** a modern browser and Git.
 
 ```bash
 git clone https://github.com/yogitha-singh/github-wrapped.git
 cd github-wrapped
-open index.html
 ```
 
-Enter any GitHub username. Done.
+Open `index.html` directly in your browser, or use a local server:
+
+```bash
+npx serve .
+```
 
 ---
 
-## 📁 Structure
+## Project Structure
 
-```
+```text
 github-wrapped/
-├── index.html
-├── style.css
-├── script.js
+├── index.html     # Application structure
+├── style.css      # UI, animations, responsive styling
+├── script.js      # API integration and application logic
 └── README.md
 ```
 
 ---
 
-## 🎯 How It Works
+## API Rate Limits
 
-1. Enter a GitHub username
-2. Three API calls fire in parallel:
-   - `/users/{username}`
-   - `/users/{username}/repos`
-   - `/users/{username}/events/public`
-3. Data aggregated — languages, streaks, stars, activity
-4. Story renders with scroll animations
-5. Download your wrapped card as PNG
-
----
-
-## 🧠 What I Learned
-
-- REST API consumption + rate limit handling
-- Aggregating data from multiple endpoints
-- Building custom SVG visualizations (3D pie from scratch)
-- Scroll animations with Intersection Observer
-- Premium dark UI with glassmorphism
-- CI/CD deployment via Vercel + GitHub
+The app uses unauthenticated requests to the public GitHub API, so rate limits apply. Private repository data is never required.
 
 ---
 
 ## 🗺️ Roadmap
 
-- [ ] Compare with friend mode
-- [ ] Personal access token support
+- [ ] Friend comparison mode
+- [ ] Personal Access Token support
 - [ ] Contribution heatmap
-- [ ] Dark/light toggle
-- [ ] Open Graph meta tags
+- [ ] Dark / light theme toggle
+- [ ] Open Graph metadata and shareable social cards
+- [ ] Improved rate-limit handling
+- [ ] More developer personality types
+- [ ] Year-over-year comparisons
 
 ---
 
-## 👤 Author
+## 🤝 Contributing
 
-**Yogitha Singh**
-- GitHub: [@yogitha-singh](https://github.com/yogitha-singh)
-- Live: [github-wrapped-xl.vercel.app](https://github-wrapped-xl.vercel.app)
+Contributions and ideas are welcome.
+
+```bash
+git checkout -b feature/your-feature
+git commit -m "feat: add your feature"
+git push origin feature/your-feature
+```
+
+Then open a pull request.
 
 ---
 
-## 📄 License
+## Project Status
 
-MIT
+**Active development.** Functional and deployed, with new analytics and visual features added over time.
 
 ---
 
-<p align="center">Made with 💖 and lots of coffee</p>
+## License
+
+Released under the [MIT License](LICENSE).
+
+---
+
+<div align="center">
+
+💜 **Created by [Yogitha Singh](https://github.com/yogitha-singh)**
+
+Built with curiosity, code, and a lot of late-night debugging.
+
+</div>
