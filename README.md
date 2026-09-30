@@ -32,7 +32,7 @@ Enter any public GitHub username and get a cinematic dashboard of coding activit
 
 Built entirely on the frontend using the GitHub REST API. No backend, no database, no setup.
 
-**Try it:** [github-wrapped-xl.vercel.app](https://github-wrapped-xl.vercel.app/)
+**Try it:**  https://github-wrapped-xi.vercel.app/
 
 ---
 
